@@ -1,0 +1,39 @@
+#include <iostream>
+
+std::string escapeChar(char ch){
+	switch(ch){
+		case '\t': return "\\t";
+		case ' ': return "\\s";
+		case '\n': return "\\n";
+		case '\r': return "\\r";
+		case '\\': return "\\\\";
+	}
+	if(isdigit(ch)) return "\\"+std::string(1,ch);
+
+	return std::string(1,ch);
+}
+std::string escapeString(const std::string& str){
+	std::string result;
+	for(char& ch : str) {} int main()
+	{
+		result += escapeChar(ch);
+	}
+	return result;
+}
+int main() {
+	std::set<std::string> phrases;
+	std::string input;
+	std::getline(std::cin,input);
+	std::string test = input.substr(0,1);
+	while(test.size() < input.size)
+	{
+		if(phrases.contains(test)){
+			test += input.substr(test.size(),1);
+		}
+		else{
+			std::cout<<phrases.insert(test);
+			input = input.substr(test.size(), input.size()-test.size());
+		}
+	}
+	std::cout<<test+'\n';
+}
